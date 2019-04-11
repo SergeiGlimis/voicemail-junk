@@ -2,7 +2,7 @@ import speech_recognition as sr
 from difflib import SequenceMatcher
 
 Spam_Keywords = (".org",".com","we","register","we need","dollars",
-                 "help us","irs","this is","interested")
+                 "help us","irs","this is","interested","donate","donation")
 # i will also decipher in a later version of the call is from a known contact or not.
 Non_Spam_Keywords = ("love you","i'll","see you","hey man","sup man","what's up",
                      "it's me","later","home"," i ", "honey","mom","dad")
@@ -38,23 +38,25 @@ def Decipher_Spam(File):
     debug_print("recognize audio")
     value = r.recognize_google(audio).lower() # names it value now and makes it lower cased to avoid inconsistancies.
     debug_print(value)
-    value = str(value).split() # split the text from the file by word.
+    value2 = str(value).split() # split the text from the file by word.
     debug_print("spliting ")
 # this next section checks to see if more spam keywords or non-spam keywords are in it. And then 
     spam = 0
     non_spam = 0
-    for word in value:
+    for word in value2:
         if word in Spam_Keywords:
-            spam = spam +1
+            debug_print(word)
+            spam = spam+1
 
         elif word in Non_Spam_Keywords:
             non_spam = non_spam +1
 
     if spam > non_spam:
-
+        debug_print("spam was more then not spam keywords")
         for ran in Example_Spam:
-            Matcher = SequenceMatcher(ran, Example_Spam).ratio()
-            if Matcher > 0.4:
+            Matcher = SequenceMatcher(ran, value).ratio()
+            debug_print("matcher number" + str(Matcher))
+            if Matcher > 0.3:
                 
                 debug_print(Matcher)
         
@@ -64,9 +66,11 @@ def Decipher_Spam(File):
         
         
     elif non_spam > spam:
+        debug_print("nonspam was more then spam keywords")
         for ran in Example_Non_Spam:
-            Matcher = SequenceMatcher(ran, Example_Spam).ratio()
-            if Matcher > 0.4:
+            Matcher = SequenceMatcher(ran, value).ratio()
+            debug_print("matcher number"+str(Matcher))
+            if Matcher > 0.3:
                 
                 debug_print(Matcher)
                 debug_print("this was not a spam message")
