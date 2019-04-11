@@ -21,24 +21,26 @@ Example_Non_Spam = ["Hey man it's john, thought i'd call and see how your doing,
 
 DEBUGGING = True
 def debug_print(text):
+    # this allows you to turn off the printing of things that aren't needed undless it's by the developer 
     global DEBUGGING
     if DEBUGGING:
         print(text)
 
 def Decipher_Spam(File):
-    debug_print("Starting to decipher.")
-    VM_Audio_File = sr.AudioFile(str(File))
+    #takes an arguent which is the file 
+    debug_print("Starting to decipher.") # uses the debug print
+    VM_Audio_File = sr.AudioFile(str(File)) # uses the file that was an argument and makes it a file recognizable to speech recognition.
     debug_print("parsing audio into speech recognition module")
-    r = sr.Recognizer()
+    r = sr.Recognizer() #makes the recognition function easier to call
 
-    with VM_Audio_File as source:
-        audio = r.record(source)
+    with VM_Audio_File as source: # uses that file we gave to speechRecognition 
+        audio = r.record(source) # play the audio file under the hood and recognise the speech, this text will be put to "audio".
     debug_print("recognize audio")
-    value = r.recognize_google(audio).lower()
+    value = r.recognize_google(audio).lower() # names it value now and makes it lower cased to avoid inconsistancies.
     debug_print(value)
-    value = str(value).split()
+    value = str(value).split() # split the text from the file by word.
     debug_print("spliting ")
-
+# this next section checks to see if more spam keywords or non-spam keywords are in it. And then 
     spam = 0
     non_spam = 0
     for word in value:
@@ -76,4 +78,4 @@ def Decipher_Spam(File):
         return None
         
 
-print(Decipher_Spam('test_leo.wav'))
+print(Decipher_Spam('test_leo.wav')) # print the output either True or False.
