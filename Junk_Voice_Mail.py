@@ -11,15 +11,17 @@ Example_Spam = ["hello this is june with infocus we are looking for people to he
                 ,"hi there, this is bob with idso we need you to register with us to help us get trump elected"
                 ,"Hi i'm hanna and im with bic we're looking for people who are interested in pens",
                 "this is the IRS you have been audited Call us at",
-                "Hello I'm calling with doornob inc. we are looking for people to register for our service"]
+                "Hello I'm calling with doornob inc. we are looking for people to register for our service",
+                "hey there this is john with temple we are looking for people to help us fund a new program",
+                "hello my name is dean, i'm calling with target we are looking for donations"]
 
 Example_Non_Spam = ["Hey man it's john, thought i'd call and see how your doing, I'll see you on monday bye",
-                    "hey honey it's jim couldn't remember which icecream you wanted me to buy get back to me as soon as you can love you bye",
+                    "hey honey it's jim couldn't remember which ice cream you wanted me to buy get back to me as soon as you can love you bye",
                     "Hey sam it's kim i'm gonna need you you to work late on friday, get back to me let me know if that works for you bye",
                     "hey dad it's me just wanted to let you know im coming out for fathers dad, get back to me as soon as you can i love you bye."]
 
 
-DEBUGGING = True
+DEBUGGING = False
 def debug_print(text):
     # this allows you to turn off the printing of things that aren't needed undless it's by the developer 
     global DEBUGGING
@@ -43,43 +45,27 @@ def Decipher_Spam(File):
 # this next section checks to see if more spam keywords or non-spam keywords are in it. And then 
     spam = 0
     non_spam = 0
-    for word in value2:
-        if word in Spam_Keywords:
+    for word in value2: # for every word in the message do something
+        if word in Spam_Keywords: # if one of those words is in the spam word list do something
             debug_print(word)
             spam = spam+1
 
-        elif word in Non_Spam_Keywords:
+        elif word in Non_Spam_Keywords: # if it's in the non spam list do something
             non_spam = non_spam +1
 
     if spam > non_spam:
         debug_print("spam was more then not spam keywords")
-        for ran in Example_Spam:
-            Matcher = SequenceMatcher(ran, value).ratio()
-            debug_print("matcher number" + str(Matcher))
-            if Matcher > 0.3:
-                
-                debug_print(Matcher)
-        
-                debug_print("this was SPAM!")
-        
-                return True
+        debug_print("this was SPAM!")
+        return True
         
         
     elif non_spam > spam:
         debug_print("nonspam was more then spam keywords")
-        for ran in Example_Non_Spam:
-            Matcher = SequenceMatcher(ran, value).ratio()
-            debug_print("matcher number"+str(Matcher))
-            if Matcher > 0.3:
-                
-                debug_print(Matcher)
-                debug_print("this was not a spam message")
-                return False
+        debug_print("this was not a spam message")
+        return False
         
         
     else:
         debug_print("was unable to decipher")
         return None
         
-
-print(Decipher_Spam('test_leo.wav')) # print the output either True or False.
