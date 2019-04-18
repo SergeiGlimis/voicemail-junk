@@ -6,7 +6,7 @@ Spam_Keywords = (".org",".com","we","register","we need","dollars",
                  "donation","information","insurance","social security",
                  "sweepstakes","help us","cash","money","price","won","winning"
                  ,"successful","Marketing","business","retire","income","incrute"
-                 ,"online","give us","elect","trump")
+                 ,"online","give us","elect","trump","want","donations","don't wait call")
 
 # i will also decipher in a later version of the call is from a known contact or not.
 Non_Spam_Keywords = ("love you","i'll","see you","hey man","sup man","what's up",
@@ -14,7 +14,8 @@ Non_Spam_Keywords = ("love you","i'll","see you","hey man","sup man","what's up"
                      "bro","love","last week","i'll see you","wanted to see"
                      "shopping","supermarket","kids","thanks","we'll see you",
                      "hey dude","appointment","office","remember","bring","wait",
-                     "my","me","outside","walking","driving")
+                     "my","me","outside","walking","driving","love you","okay",
+                     "yesterday","tomorrow","can we")
 
 
 DEBUGGING = True
@@ -75,3 +76,17 @@ def DecSpam(value):
         debug_print("was unable to decipher")
         return None
         
+
+if __name__=="__main__":
+    
+    v1 = VoiceWav("test_1.wav")
+    v2 = VoiceWav("test_2.wav")
+    v3 = VoiceWav("test_3.wav")
+    v4 = VoiceWav("test_4.wav")
+
+    DecSpam(v1)
+    DecSpam(v2)
+    DecSpam(v3)
+    DecSpam(v4)
+
+    
