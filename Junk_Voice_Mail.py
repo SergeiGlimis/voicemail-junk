@@ -15,7 +15,8 @@ Non_Spam_Keywords = ("love you","i'll","see you","hey man","sup man","what's up"
                      "shopping","supermarket","kids","thanks","we'll see you",
                      "hey dude","appointment","office","remember","bring","wait",
                      "my","me","outside","walking","driving","love you","okay",
-                     "yesterday","tomorrow","can we")
+                     "yesterday","tomorrow","can we","man","don't forget","at work"
+                     ,"at school")
 
 
 DEBUGGING = True
@@ -40,8 +41,17 @@ def VoiceWav(File):
     value = r.recognize_google(audio).lower()
     return value
 
+def GetText(File):
+        j = open(File)
+        for i in j:
+            print (i)
+        
 
-
+def DecMult(value):
+    listV = value.split("@")
+    for i in listV:
+        a = DecSpam(i)
+        print(a)
     
 def DecSpam(value):
  # names it value now and makes it lower cased to avoid inconsistancies.
@@ -78,15 +88,19 @@ def DecSpam(value):
         
 
 if __name__=="__main__":
-    
-    v1 = VoiceWav("test_1.wav")
-    v2 = VoiceWav("test_2.wav")
-    v3 = VoiceWav("test_3.wav")
-    v4 = VoiceWav("test_4.wav")
 
-    DecSpam(v1)
-    DecSpam(v2)
-    DecSpam(v3)
-    DecSpam(v4)
+
+    v = GetText("sergei_voicemail_test_3.txt")
+    
+##    v1 = VoiceWav("test_1.wav")
+##    v2 = VoiceWav("test_2.wav")
+##    v3 = VoiceWav("test_3.wav")
+##    v4 = VoiceWav("test_4.wav")
+
+    DecMult(v)
+##    DecSpam(v1)
+##    DecSpam(v2)
+##    DecSpam(v3)
+##    DecSpam(v4)
 
     
