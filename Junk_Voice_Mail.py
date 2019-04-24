@@ -53,28 +53,34 @@ def GetText(File):
 
 
 def DecMult(val):
+    returno = []
     listV = str(val).split("*")
     for i in listV:
         a = DecSpam(i)
         debug_print(a)
-
+        
+        returno.append(a)
+        
+    return returno
+        
 
 
     
 def DecSpam(value):
  # names it value now and makes it lower cased to avoid inconsistancies.
     debug_print(value)
-    value2 = str(value).split() # split the text from the file by word.
+    #value2 = str(value).split() # split the text from the file by word.
     debug_print("spliting ")
 # this next section checks to see if more spam keywords or non-spam keywords are in it. And then 
     spam = 0
     non_spam = 0
-    for word in value2: # for every word in the message do something
-        if word in Spam_Keywords: # if one of those words is in the spam word list do something
+    for word in Spam_Keywords: # for every word in the message do something
+        if word in value: # if one of those words is in the spam word list do something
             debug_print(word)
             spam = spam+1
 
-        elif word in Non_Spam_Keywords: # if it's in the non spam list do something
+    for word in Non_Spam_Keywords:
+        if word in value: # if it's in the non spam list do something
             debug_print(word)
             non_spam = non_spam +1
 
@@ -105,7 +111,9 @@ if __name__=="__main__":
 ##    v4 = VoiceWav("test_4.wav")
 
     # Decipher Multiple messages
-    DecMult(" this is a message from acme, we are looking for people to give donations to keep our store happy * hey it's bob it's been a while hope to see you soon, bye * hey man it's jim, I just wanted to see how you were doing. i'll see you on monday bye")
+    DEBUGGING = False
+    result = DecMult(" this is a message from acme, we are looking for people to give donations to keep our store happy * hey it's bob it's been a while hope to see you soon, bye * hey man it's jim, I just wanted to see how you were doing. i'll see you on monday bye")
+    print(result)
 ##    DecSpam(v1)
 ##    DecSpam(v2)
 ##    DecSpam(v3)
