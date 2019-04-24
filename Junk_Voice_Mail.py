@@ -41,17 +41,25 @@ def VoiceWav(File):
     value = r.recognize_google(audio).lower()
     return value
 
+
+
+
+
 def GetText(File):
         j = open(File)
-        for i in j:
-            print (i)
-        
+        debug_print("j is "+j.read())
+        return j.read()
 
-def DecMult(value):
-    listV = value.split("@")
+
+
+def DecMult(val):
+    listV = str(val).split("*")
     for i in listV:
         a = DecSpam(i)
-        print(a)
+        debug_print(a)
+
+
+
     
 def DecSpam(value):
  # names it value now and makes it lower cased to avoid inconsistancies.
@@ -90,14 +98,14 @@ def DecSpam(value):
 if __name__=="__main__":
 
 
-    v = GetText("sergei_voicemail_test_3.txt")
     
 ##    v1 = VoiceWav("test_1.wav")
 ##    v2 = VoiceWav("test_2.wav")
 ##    v3 = VoiceWav("test_3.wav")
 ##    v4 = VoiceWav("test_4.wav")
 
-    DecMult(v)
+    # Decipher Multiple messages
+    DecMult(" this is a message from acme, we are looking for people to give donations to keep our store happy * hey it's bob it's been a while hope to see you soon, bye * hey man it's jim, I just wanted to see how you were doing. i'll see you on monday bye")
 ##    DecSpam(v1)
 ##    DecSpam(v2)
 ##    DecSpam(v3)
