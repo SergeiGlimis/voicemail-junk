@@ -112,7 +112,9 @@ if __name__=="__main__":
 
     # Decipher Multiple messages
     DEBUGGING = False
-    result = DecMult(" this is a message from acme, we are looking for people to give donations to keep our store happy * hey it's bob it's been a while hope to see you soon, bye * hey man it's jim, I just wanted to see how you were doing. i'll see you on monday bye")
+    v = VoiceWav("test_3.wav")
+    result = DecSpam(v)
+    #result = DecMult(" this is a message from acme, we are looking for people to give donations to keep our store happy * hey it's bob it's been a while hope to see you soon, bye * hey man it's jim, I just wanted to see how you were doing. i'll see you on monday bye")
     print(result)
 ##    DecSpam(v1)
 ##    DecSpam(v2)
