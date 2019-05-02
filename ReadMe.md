@@ -22,8 +22,8 @@ separated by a *.
 If you want to use it for voicemails in wav format you must first use VoiceWav() with
 the file you wish to get the text transcript for, as an argument in string form. Make sure to have
 the .wav at the end. You can return this to a varible and then you can use DecSpam() with that varible
-as the argument. This will return TRUE of FALSE, TRUE means it is spam, FALSE means it is not a spam
-message. if you wish to get more info on either why or how it is working you can turn on DEBUGGING by
+as the argument. This will return TRUE, FALSE or NONE. TRUE means it is spam, FALSE means it is not a spam
+message and NONE means it was unable to decipher it. if you wish to get more info on either why or how it is working you can turn on DEBUGGING by
 changing DEBUGGING from FALSE to TRUE.
 
     DEBUGGING = FALSE
@@ -41,7 +41,7 @@ first of all if something is giving you trouble dont shoot it!!
 there are a few reasons the program may throw an error or not work as intended.
 
  OFFINE: if there is no internet access then the Speech recognition module can't reach it's server and function,
- Tthis will throw an error.
+ this will throw an error.
 
  NONE: This progrma is not perfect yet so it sometimes will not be able to decipher some voicemails. If this is
  the case the program will return NONE.
