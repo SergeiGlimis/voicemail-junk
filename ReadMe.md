@@ -1,10 +1,10 @@
 
-##overview
+## Overview
 
 This program can be used to decipher if wav files or text are spam voicemails or are not spam voicemails.
 You must download a dependency and make sure the files you are running it on will work.
 
-##Setup and dependencies
+## Setup and Dependencies
 
 First you need to make sure the wav files aren’t corrupted or broken, if they are the program wil throw
 an error, also make sure they are in the same folder as the program. There is only one dependency, this
