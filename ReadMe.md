@@ -37,14 +37,15 @@ is working you can turn on DEBUGGING by changing DEBUGGING from FALSE to TRUE.
 This will print everything it is doing and all the things that make the program classify the message in the
 way that it does. If you wish to use this on multiple Strings use the DecMult() with the voicemails in text form in 
 a string. between each voicemail in the strong put a * symbol. this tells the program that you wish to decipher each
-one seperately. This will return a list of booleans in order. the first in the string will be the first and so on.
+one seperately. This will return a list of booleans in order, the first in the string you inputed will be the first
+in the list returned and so on.
 
     example:
         [True,False,True,True,None,True]
 
 ## Trouble Shooting
 
-first of all if something is giving you trouble dont shoot it!!
+first of all if something is giving you trouble don't shoot it!!
 there are a few reasons the program may throw an error or not work as intended.
 
  OFFINE: if there is no internet access then the Speech recognition module can't reach it's server and function,
