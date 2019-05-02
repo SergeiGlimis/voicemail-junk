@@ -1,17 +1,23 @@
+
+##overview
+
 This program can be used to decipher if wav files or text are spam voicemails or are not spam voicemails.
 You must download a dependency and make sure the files you are running it on will work.
 
+##Setup and dependencies
 
 First you need to make sure the wav files aren’t corrupted or broken, if they are the program wil throw
-an error, also make sure they are in the same folder as the program. First you must install
-Speech Recognition to get the recognition module.
+an error, also make sure they are in the same folder as the program. There is only one dependency, this
+is a modlue called simply Speech Recognition so you must install Speech Recognition to get the recognition
+module.
 
     Pip3 install SpeechRecognition 
+
+## Usage Details
 
 when the program is run you can use the function DecSpam() for classifying one string. To get the string
 of the wav use VoiceWav() to get the text. You can use DecMult() to decipher multiple strings at once
 separated by a *.
-
 
 If you want to use it for voicemails in wav format you must first use VoiceWav() with
 the file you wish to get the text transcript for, as an argument in string form. Make sure to have
